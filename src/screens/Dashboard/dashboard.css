@@ -68,3 +68,28 @@
 .poem-button:active {
   background-color: #8b1a1a;
 }
+
+
+@media (max-width: 430px) {
+  .poem-excerpt {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .poem-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dashboard-title {
+    margin-top: 8rem;
+
+  }
+
+  .poem-button {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+}
