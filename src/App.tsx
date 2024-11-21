@@ -4,6 +4,7 @@ import Intro from "./screens/Intro/Intro";
 import Dashboard from "./screens/Dashboard/Dashboard";
 import Detail from "./screens/Detail/Detail";
 import Form from "./screens/Form/Form";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
 const poems = [
   {
@@ -36,10 +37,19 @@ const examplePoem = {
 };
 
 function App() {
-  return <Form />;
-  // return <Detail poem={examplePoem} onBack={() => {}} />;
-  // return <Dashboard poems={poems} onViewPoem={() => {}} />;
-  // return <Intro onNext={() => {}} />;
+  return (
+    <Router>
+    <Routes>
+      <Route path="/" element={<Intro onNext={() => {}}/>} />
+      <Route path="/Dashboard" element={<Dashboard poems={poems} onViewPoem={(id) => console.log(id)} />} />
+    </Routes>
+  </Router>
+  )
 }
 
 export default App;
+
+//<Intro onNext={() => {}} />; 
+// return <Detail poem={examplePoem} onBack={() => {}} />;
+  // return <Dashboard poems={poems} onViewPoem={() => {}} />;
+  // return <Form onNext={() => {}} />;

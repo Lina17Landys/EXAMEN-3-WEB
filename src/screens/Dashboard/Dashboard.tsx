@@ -1,4 +1,5 @@
 import "./dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 interface DashboardProps {
   poems: {
@@ -6,10 +7,15 @@ interface DashboardProps {
     title: string;
     excerpt: string;
   }[];
-  onViewPoem: (id: string) => void;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ poems, onViewPoem }) => {
+const Dashboard: React.FC<DashboardProps> = ({ poems }) => {
+  const navigate = useNavigate();
+
+  const handleViewPoem = (id: string) => {
+    navigate(`/detail/${id}`);
+  };
+
   return (
     <div className="dashboard">
       <h1 className="dashboard-title">Poem Dashboard</h1>
@@ -18,7 +24,7 @@ const Dashboard: React.FC<DashboardProps> = ({ poems, onViewPoem }) => {
           <div key={poem.id} className="poem-card">
             <h2 className="poem-title">{poem.title}</h2>
             <p className="poem-excerpt">{poem.excerpt}...</p>
-            <button className="poem-button" onClick={() => onViewPoem(poem.id)}>
+            <button className="poem-button" onClick={() => handleViewPoem(poem.id)}>
               Read More
             </button>
           </div>
@@ -29,3 +35,4 @@ const Dashboard: React.FC<DashboardProps> = ({ poems, onViewPoem }) => {
 };
 
 export default Dashboard;
+
