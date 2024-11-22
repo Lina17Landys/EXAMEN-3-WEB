@@ -1,4 +1,5 @@
 import "./dashboard.css";
+import CreatePoemButton from "../../components/addPoemBtn/newPoem";
 import { useNavigate } from "react-router-dom";
 
 interface DashboardProps {
@@ -29,6 +30,10 @@ const Dashboard: React.FC<DashboardProps> = ({ poems }) => {
             </button>
           </div>
         ))}
+      </div>
+<CreatePoemButton/>
+      <div className="btn">
+
       </div>
     </div>
   );

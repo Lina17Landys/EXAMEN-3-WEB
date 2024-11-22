@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./form.css";
+import { NewPoemProvider } from "../../contexts/poemContext";
 
 import PoemStepOne from "../../components/PoemStepOne/PoemStepOne";
 import PoemStepTwo from "../../components/PoemStepTwo/PoemStepTwo";
@@ -21,15 +22,17 @@ const Form: React.FC = () => {
   };
 
   return (
-    <>
-      {step === 1 && <PoemStepOne onNext={handleStep1Next} />}
-      {step === 2 && (
-        <PoemStepTwo onNext={handleStep2Next} onBack={() => setStep(1)} />
-      )}
-      {step === 3 && (
-        <PoemStepThree onFinish={handleStep3Finish} onBack={() => setStep(2)} />
-      )}
-    </>
+    <NewPoemProvider> 
+      <>
+        {step === 1 && <PoemStepOne onNext={handleStep1Next} />}
+        {step === 2 && (
+          <PoemStepTwo onNext={handleStep2Next} onBack={() => setStep(1)} />
+        )}
+        {step === 3 && (
+          <PoemStepThree onFinish={handleStep3Finish} onBack={() => setStep(2)} />
+        )}
+      </>
+    </NewPoemProvider>
   );
 };
 
